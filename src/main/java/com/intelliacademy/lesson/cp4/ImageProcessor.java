@@ -20,6 +20,7 @@ public class ImageProcessor {
             bufferedImage = ImageIO.read(new File(SOURCE_FILE));
             var outputImage = generateOutputImage(bufferedImage);
             this.proceedSingleThread(bufferedImage,outputImage);
+            ImageIO.write(outputImage,"jpg",new File(DESTINATION_FILE));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
