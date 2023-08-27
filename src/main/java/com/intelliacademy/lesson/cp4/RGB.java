@@ -94,6 +94,7 @@ public class RGB {
             rgb |= red << 16;
 
             rgb |= 0xFF000000;
+            this.rgb = rgb;
             return new RGB(this);
         }
     }
