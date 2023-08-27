@@ -1,4 +1,4 @@
-package com.intelliacademy.lesson.cp1;
+package com.intelliacademy.lesson.cp4;
 
 import com.intelliacademy.lesson.env.Person;
 
