@@ -61,6 +61,7 @@ public class ImageProcessor {
                 .green(newGreen)
                 .blue(newBlue)
                 .build();
+        setRGB(outPut,x,y,newRgb.getRgb());
     }
 
     private void setRGB(BufferedImage output,int x,int y,int rgb){
