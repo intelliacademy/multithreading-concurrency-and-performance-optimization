@@ -29,19 +29,19 @@ public class ImageProcessor {
     }
 
     private void proceedSingleThread(BufferedImage input){
-        this.recolorImage(input,this.outputImage,0,0,input.getWidth(),input.getHeight());
+        this.draw(input,this.outputImage,0,0,input.getWidth(),input.getHeight());
     }
 
-    private void recolorImage(BufferedImage input,BufferedImage output,int leftCorner,int topCorner,
-                              int width,int height){
+    private void draw(BufferedImage input, BufferedImage output, int leftCorner, int topCorner,
+                      int width, int height){
         for (int x = leftCorner;x < leftCorner + width && x < input.getWidth();x++){
             for (int y = topCorner; y < topCorner + height && y < input.getHeight(); y++){
-                this.recolorPixel(input,output,x,y);
+                this.drawPixel(input,x,y);
             }
         }
     }
 
-    private void recolorPixel(BufferedImage input,BufferedImage outPut,int x,int y){
+    private void drawPixel(BufferedImage input, int x, int y){
         RGB rgb = new RGB(input.getRGB(x, y));
 
         int newRed;
