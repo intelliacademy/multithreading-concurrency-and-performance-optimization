@@ -1,8 +1,8 @@
-
-
 package com.intelliacademy.lesson.cp2.impl;
 
 import com.intelliacademy.lesson.env.Task;
+
+import com.intelliacademy.lesson.cp2.impl.SequentialProcess1;
 
 public class SequentialProcess2 {
     public static void main(String[] args) {

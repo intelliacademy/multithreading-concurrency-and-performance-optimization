@@ -1,5 +1,6 @@
 package com.intelliacademy.lesson.cp2.impl;
 
+import com.intelliacademy.lesson.cp2.impl.StartingThreadWithRunnable;
 
 import com.intelliacademy.lesson.env.ProcessManager;
 
