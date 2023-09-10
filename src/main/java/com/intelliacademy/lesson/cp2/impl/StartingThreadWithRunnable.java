@@ -8,7 +8,7 @@ import com.intelliacademy.lesson.env.ProcessManager;
 public class StartingThreadWithRunnable {
 
     public static void main(String[] args) {
-        //Multi-threaded execution
+        //Time-slicing is a method to share CPU time between multiple threads in single processor.
         Thread thread1 = new Thread(new AnyManager("Task 1"));
         Thread thread2 = new Thread(new AnyManager("Task 2"));
         thread1.start();
