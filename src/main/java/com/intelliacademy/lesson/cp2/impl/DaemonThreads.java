@@ -1,5 +1,6 @@
 package com.intelliacademy.lesson.cp2.impl;
 
+
 public class DaemonThreads {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Main thread started");
@@ -11,7 +12,11 @@ public class DaemonThreads {
         thread.setName("Daemon thread");
         thread.setDaemon(true);
         thread.start();
+
+        System.out.println("Thread is Daemon"+thread.isDaemon());
+
         Thread.sleep(100);
+
         System.out.println("Main thread finished");
     }
 }

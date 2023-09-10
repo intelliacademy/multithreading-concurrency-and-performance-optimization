@@ -1,6 +1,8 @@
 package com.intelliacademy.lesson.cp2.impl;
 
 
+import com.intelliacademy.lesson.env.XIterableRunnable;
+
 public class StartingThreadWithThread {
     public static void main(String[] args) {
         XThread t1 = new XThread("t1");
@@ -15,6 +17,11 @@ class XThread extends Thread {
     private Thread listenThread;
 
     public XThread(String name) {
+        this.name = name;
+        this.setName(name);
+    }
+
+    public XThread(XIterableRunnable iterableRunnable,String name) {
         this.name = name;
         this.setName(name);
     }

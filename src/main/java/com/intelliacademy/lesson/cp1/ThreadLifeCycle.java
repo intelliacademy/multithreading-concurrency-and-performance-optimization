@@ -1,7 +1,6 @@
 
 package com.intelliacademy.lesson.cp1;
 
-import com.intelliacademy.lesson.env.GThread;
 import com.intelliacademy.lesson.env.XRunnable;
 
 public class ThreadLifeCycle {

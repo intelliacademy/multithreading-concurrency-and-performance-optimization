@@ -1,8 +1,6 @@
 package com.intelliacademy.lesson.cp1;
 
-import java.util.Objects;
-
-public class Main {
+public class Introduction {
 
 
     public static void main(String[] args) {
