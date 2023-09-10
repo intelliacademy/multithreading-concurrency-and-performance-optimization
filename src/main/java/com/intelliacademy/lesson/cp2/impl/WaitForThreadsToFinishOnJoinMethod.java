@@ -13,6 +13,7 @@ public class WaitForThreadsToFinishOnJoinMethod {
         try {
             //JVM will wait for t1 to finish for execution of next line
             t1.join();
+            //t2.join();
         } catch (InterruptedException e){
             e.printStackTrace();
         }
