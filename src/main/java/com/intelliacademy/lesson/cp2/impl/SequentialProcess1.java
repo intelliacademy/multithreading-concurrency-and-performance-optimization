@@ -2,7 +2,7 @@
 
 package com.intelliacademy.lesson.cp2.impl;
 
-public class SequentialProcess {
+public class SequentialProcess1 {
     public static void main(String[] args) {
         printThreadInfo("Execution 1");
         downloadFile();
