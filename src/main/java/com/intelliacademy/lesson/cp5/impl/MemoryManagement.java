@@ -4,7 +4,7 @@ package com.intelliacademy.lesson.cp5.impl;
 
 public class MemoryManagement {
     public static void main(String[] args) {
-        //Run with Debug mode
+        //Run with only Debug mode
         System.out.println("Main thread proceed on " + Thread.currentThread().getName());
 
         somethingDoIt();
