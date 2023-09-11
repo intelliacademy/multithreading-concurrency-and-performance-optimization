@@ -1,6 +1,8 @@
 package com.intelliacademy.lesson.cp5.impl;
 
 import com.intelliacademy.lesson.env.Counter;
+import com.intelliacademy.lesson.env.SynchronizedCounter;
+
 
 public class Synchronization {
     public static Integer HUNDRED = 100;
@@ -11,6 +13,7 @@ public class Synchronization {
 
     public static void main(String[] args) {
         Counter counter = new Counter();
+        //SynchronizedCounter counter = new SynchronizedCounter();
 
         Thread incrementThread = new Thread(() -> {
             for (int i = 0; i < TEN_THOUSAND; i++) {

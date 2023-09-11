@@ -1,10 +1,10 @@
 package com.intelliacademy.lesson.env;
 
-public class Counter {
-    private int count = 0;
+public class SynchronizedCounter {
+    private volatile int count = 0;
 
     //May be synchronized
-    public void increment() {
+    public synchronized void increment() {
         //count = count + 1;
         count++;
     }
@@ -12,7 +12,9 @@ public class Counter {
     //May be synchronized
     public void decrement() {
         //count = count - 1;
-        count--;
+        synchronized (this) {
+            count--;
+        }
     }
 
     public int getCount() {
