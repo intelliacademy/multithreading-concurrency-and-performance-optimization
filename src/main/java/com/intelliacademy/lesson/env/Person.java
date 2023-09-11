@@ -4,6 +4,9 @@ import az.rock.csv4j.annotation.CSVColumn;
 import az.rock.csv4j.annotation.CSVModel;
 import az.rock.csv4j.annotation.ColumnType;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
@@ -39,20 +42,60 @@ public class Person implements Comparable<Person> ,Cloneable {
     private String salary;
 
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", salary='" + salary + '\'' +
-                ", birthday=" + birthday +
-                ", email='" + email + '\'' +
-                ", gender='" + gender + '\'' +
-                ", city='" + city + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+    public static class PersonRoot {
+        private UUID id;
+        private String firstName;
+        private String lastName;
+        private LocalDate birthday;
+
+        private String email;
+
+        private Gender gender;
+        private String city;
+        private String address;
+        private BigDecimal salary;
+
+        private PersonRoot(Person person) {
+            this.id = person.getId();
+            this.firstName = person.getFirstName();
+            this.lastName = person.getLastName();
+            this.birthday = person.birthday.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            this.gender = Gender.of(Objects.requireNonNullElse(person.getGender(),"MALE"));
+            this.email = person.getEmail();
+            this.city = person.getCity();
+            this.address = person.getAddress();
+            this.salary = parseSalary(person.getSalary());
+        }
+
+        private static BigDecimal parseSalary(String salary){
+            try {
+                return new BigDecimal(salary);
+            }catch (NumberFormatException e){
+                return BigDecimal.ZERO;
+            }
+        }
+
+        public static PersonRoot of(Person person) {
+            return new PersonRoot(person);
+        }
+
+        @Override
+        public String toString() {
+            return "\n" +
+                    "Person {" +"\n" +
+                    "   id=" + id + "\n" +
+                    "   , firstName='" + firstName + '\'' + "\n" +
+                    "   , lastName='" + lastName + '\'' + "\n" +
+                    "   , salary='" + salary + '\'' + "\n" +
+                    "   , birthday=" + birthday + "\n" +
+                    "   , email='" + email + '\'' + "\n" +
+                    "   , gender='" + gender + '\'' + "\n" +
+                    "   , city='" + city + '\'' + "\n" +
+                    "   , address='" + address + '\'' + "\n" +
+                    '}';
+        }
     }
+
 
 
     public UUID getId() {
