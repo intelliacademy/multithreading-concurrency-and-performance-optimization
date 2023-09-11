@@ -9,7 +9,6 @@ public class WaitAndNotify {
     public static void main(String[] args) throws InterruptedException {
         var data = DataProvider.provide()
                 .stream()
-                .map(Person.PersonRoot::of)
                 .toList();
 
         Pipeline<Person.PersonRoot> pipeline = new Pipeline<>();
@@ -61,9 +60,9 @@ public class WaitAndNotify {
 
     }
 
-    private static synchronized void iterator(List<Person.PersonRoot> data, Pipeline<Person.PersonRoot> pipeline) throws InterruptedException {
-        for (Person.PersonRoot person : data) {
-            pipeline.produce(person);
+    private static synchronized void iterator(List<Person> data, Pipeline<Person.PersonRoot> pipeline) throws InterruptedException {
+        for (Person person : data) {
+            pipeline.produce(Person.PersonRoot.of(person));
         }
     }
 }

@@ -7,13 +7,12 @@ public class Sequential {
     public static void main(String[] args) {
         var data = DataProvider.provide()
                 .stream()
-                .map(Person.PersonRoot::of)
                 .toList();
 
         Pipeline<Person.PersonRoot> pipeline = new Pipeline<>();
 
         var start = System.currentTimeMillis();
-        data.forEach(pipeline::produce);
+        data.stream().map(Person.PersonRoot::of).forEach(pipeline::produce);
         pipeline.consumeAll();
         System.out.println("Time elapsed: " + (System.currentTimeMillis() - start));
     }
