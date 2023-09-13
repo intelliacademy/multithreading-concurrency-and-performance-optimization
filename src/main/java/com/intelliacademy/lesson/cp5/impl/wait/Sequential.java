@@ -1,4 +1,4 @@
-package com.intelliacademy.lesson.cp5.impl.pipeline;
+package com.intelliacademy.lesson.cp5.impl.wait;
 
 import com.intelliacademy.lesson.env.DataProvider;
 import com.intelliacademy.lesson.env.Person;
