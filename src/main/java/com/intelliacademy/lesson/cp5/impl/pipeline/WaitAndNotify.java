@@ -3,6 +3,7 @@ package com.intelliacademy.lesson.cp5.impl.pipeline;
 import com.intelliacademy.lesson.env.DataProvider;
 import com.intelliacademy.lesson.env.Person;
 
+
 import java.util.List;
 
 public class WaitAndNotify {

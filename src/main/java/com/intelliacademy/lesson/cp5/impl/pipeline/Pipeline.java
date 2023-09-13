@@ -1,39 +1,38 @@
 package com.intelliacademy.lesson.cp5.impl.pipeline;
 
+import java.util.NoSuchElementException;
 import java.util.Queue;
 
 public class Pipeline <T>{
     private final Queue<T> queue = new java.util.LinkedList<>();
+
+    private final Object lock = new Object();
 
     public Queue<T> getQueue() {
         return queue;
     }
 
     public void produce(T t) {
-        synchronized (this){
+        synchronized (lock){
             System.out.println(Thread.currentThread().getName() + " is producing");
-            try {
-                Thread.sleep(0);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
             queue.add(t);
-            this.notify();
+            this.lock.notify();
         }
     }
 
     public void consume()  {
-        synchronized (this){
-            if (queue.isEmpty()){
-                System.out.println(Thread.currentThread().getName() + " is waiting");
+        synchronized (lock){
+            try {
+                queue.remove();
+                System.out.println(Thread.currentThread().getName() + " is consuming");
+            }catch (NoSuchElementException exception){
                 try {
-                    this.wait();
+                    System.out.println(Thread.currentThread().getName() + " is waiting");
+                    this.lock.wait();
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
-            System.out.println(Thread.currentThread().getName() + " is consuming");
-            var t = queue.poll();
         }
     }
 
