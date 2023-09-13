@@ -30,6 +30,7 @@ public class Pipeline <T>{
                     System.out.println(Thread.currentThread().getName() + " is waiting");
                     this.lock.wait();
                 } catch (InterruptedException e) {
+                    System.out.println(Thread.currentThread().getName() + " is interrupted");
                     throw new RuntimeException(e);
                 }
             }
