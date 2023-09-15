@@ -21,7 +21,7 @@ public class ReentrantPipeline<T>{
             lock.lock();
             System.out.println(Thread.currentThread().getName() + " is producing");
             queue.add(t);
-            this.condition.signal();
+            this.condition.signalAll();
         }finally {
             this.lock.unlock();
         }
