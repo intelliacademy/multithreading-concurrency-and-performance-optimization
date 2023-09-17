@@ -3,7 +3,7 @@ package com.intelliacademy.lesson.cp6;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class DeadLockAndLiveLock {
+public class DeadLock {
     private final Lock lock1 = new ReentrantLock(true);
     private final Lock lock2 = new ReentrantLock(true);
 
@@ -42,11 +42,11 @@ public class DeadLockAndLiveLock {
     }
 }
 
-class Main{
+class DeadlockMain {
     public static void main(String[] args) {
-        DeadLockAndLiveLock deadLockAndLiveLock = new DeadLockAndLiveLock();
-        Thread thread1 = new Thread(deadLockAndLiveLock::execute);
-        Thread thread2 = new Thread(deadLockAndLiveLock::execute);
+        DeadLock deadLock = new DeadLock();
+        Thread thread1 = new Thread(deadLock::execute);
+        Thread thread2 = new Thread(deadLock::execute);
         thread1.start();
         thread2.start();
     }
